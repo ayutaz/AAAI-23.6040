@@ -4,6 +4,39 @@ This repository provides the source code and trained model to reproduce the resu
 
 Atsushi Takada, Daichi Yamazaki, Likun Liu, Yudai Yoshida, Nyamkhuu Ganbat, Takayuki Shimotomai, Taiga Yamamoto, Daisuke Sakurai, Naoki Hamada, "GenéLive! Generating Rhythm Actions in Love Live!", [DOI: 10.48550/arXiv.2202.12823](https://doi.org/10.48550/arXiv.2202.12823), to appear at [AAAI-23](https://aaai.org/Conferences/AAAI-23).
 
+## uvで動かす環境構築
+
+1. python 3.8で環境を構築(Winodws)
+
+  ```sh
+  uv venv -p 3.8
+  ```
+
+2. 必要なライブラリをインストール
+
+```sh
+uv pip install -r requirements.txt
+```
+
+3. pythonのパスの設定
+
+```sh
+$env:PYTHONPATH = "$env:PYTHONPATH;{your path}\AAAI-23.6040"
+```
+
+4. ビルド
+
+```sh
+docker build -t genelive-pip .
+```
+
+5. コンテナの実行
+
+```sh
+docker run -it --rm -v ${PWD}/data:/app/data -v ${PWD}/mlruns:/app/mlruns genelive-pip bash
+```
+
+
 
 ## Implementations of the Proposed Method
 
